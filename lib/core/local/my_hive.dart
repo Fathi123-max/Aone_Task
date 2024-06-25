@@ -1,5 +1,6 @@
-import '../models/user_model.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+
+import 'models/user_model.dart';
 
 class MyHive {
   // prevent making instance
@@ -14,10 +15,11 @@ class MyHive {
 
   /// initialize local db (HIVE)
   /// pass testPath only if you are testing hive
-  static Future<void> init({Function(HiveInterface)? registerAdapters,String? testPath}) async {
-    if(testPath != null) {
+  static Future<void> init(
+      {Function(HiveInterface)? registerAdapters, String? testPath}) async {
+    if (testPath != null) {
       Hive.init(testPath);
-    }else {
+    } else {
       await Hive.initFlutter();
     }
     await registerAdapters?.call(Hive);
@@ -57,7 +59,6 @@ class MyHive {
       return false;
     }
   }
-
 
   // setter for _userBox (only using it for testing)
   set userBox(Box<UserModel> box) {
