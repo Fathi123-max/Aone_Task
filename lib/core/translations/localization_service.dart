@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx_skeleton/core/local/my_shared_pref.dart';
 
-import '../local/my_shared_pref.dart';
 import 'ar_AR/ar_ar_translation.dart';
 import 'en_US/en_us_translation.dart';
 

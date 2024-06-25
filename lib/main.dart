@@ -3,8 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getx_skeleton/utils/awesome_notifications_helper.dart';
 
-import 'core/local/models/user_model.dart';
-import 'core/local/my_hive.dart';
 import 'core/local/my_shared_pref.dart';
 import 'core/routes/app_pages.dart';
 import 'core/theme/my_theme.dart';
@@ -14,12 +12,6 @@ import 'utils/fcm_helper.dart';
 Future<void> main() async {
   // wait for bindings
   WidgetsFlutterBinding.ensureInitialized();
-
-  // initialize local db (hive) and register our custom adapters
-  await MyHive.init(registerAdapters: (hive) {
-    hive.registerAdapter(UserModelAdapter());
-    //myHive.registerAdapter(OtherAdapter());
-  });
 
   // init shared preference
   await MySharedPref.init();
@@ -57,7 +49,7 @@ Future<void> main() async {
             );
           },
           initialRoute:
-              AppPages.INITIAL, // first screen to show when app is running
+              AppPages.initialRoute, // first screen to show when app is running
           getPages: AppPages.routes, // app screens
           locale: MySharedPref.getCurrentLocal(), // app language
           translations: LocalizationService

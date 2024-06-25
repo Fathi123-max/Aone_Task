@@ -1,8 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:getx_skeleton/core/local/my_shared_pref.dart';
 import 'package:logger/logger.dart';
 
-import '../core/local/my_shared_pref.dart';
 import 'awesome_notifications_helper.dart';
 
 class FcmHelper {
