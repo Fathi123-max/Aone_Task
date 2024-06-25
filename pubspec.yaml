@@ -20,7 +20,7 @@ dependencies:
   hive: ^2.2.3  # local database (SQFlite replacement)
   hive_flutter: ^1.1.0 # make it easy to use hive (no need for path provider)
   shared_preferences: ^2.2.3 # shared preferences persistence key value store
- 
+  page_transition: ^2.0.9
 
   firebase_core: ^3.0.0 # to initialize firebase services
   firebase_messaging: ^15.0.0 # fcm services
