@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:getx_skeleton/utils/awesome_notifications_helper.dart';
 
+import 'aone_app.dart';
 import 'core/local/my_shared_pref.dart';
-import 'core/routes/app_pages.dart';
-import 'core/theme/my_theme.dart';
-import 'core/translations/localization_service.dart';
 import 'utils/fcm_helper.dart';
 
 Future<void> main() async {
@@ -23,39 +19,6 @@ Future<void> main() async {
   await AwesomeNotificationsHelper.init();
 
   runApp(
-    ScreenUtilInit(
-      // todo add your (Xd / Figma) artboard size
-      designSize: const Size(375, 812),
-      minTextAdapt: true,
-      splitScreenMode: true,
-      useInheritedMediaQuery: true,
-      rebuildFactor: (old, data) => true,
-      builder: (context, widget) {
-        return GetMaterialApp(
-          // todo add your app name
-          title: "Aone Task",
-          useInheritedMediaQuery: true,
-          debugShowCheckedModeBanner: false,
-          builder: (context, widget) {
-            bool themeIsLight = MySharedPref.getThemeIsLight();
-            return Theme(
-              data: MyTheme.getThemeData(isLight: themeIsLight),
-              child: MediaQuery(
-                // prevent font from scalling (some people use big/small device fonts)
-                // but we want our app font to still the same and dont get affected
-                data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
-                child: widget!,
-              ),
-            );
-          },
-          initialRoute:
-              AppPages.initialRoute, // first screen to show when app is running
-          getPages: AppPages.routes, // app screens
-          locale: MySharedPref.getCurrentLocal(), // app language
-          translations: LocalizationService
-              .getInstance(), // localization services in app (controller app language)
-        );
-      },
-    ),
+    const AoneApp(),
   );
 }

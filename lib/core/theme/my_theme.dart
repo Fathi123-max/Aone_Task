@@ -2,85 +2,38 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_skeleton/core/local/my_shared_pref.dart';
 
-import 'dark_theme_colors.dart';
-import 'light_theme_colors.dart';
 import 'my_styles.dart';
 
 class MyTheme {
-  static getThemeData({required bool isLight}) {
+  static getThemeData() {
     return ThemeData(
         // main color (app bar,tabs..etc)
-        primaryColor: isLight
-            ? LightThemeColors.primaryColor
-            : DarkThemeColors.primaryColor,
-
-        // secondary & background color
-        colorScheme: ColorScheme.fromSwatch(
-          accentColor: isLight
-              ? LightThemeColors.accentColor
-              : DarkThemeColors.accentColor,
-          backgroundColor: isLight
-              ? LightThemeColors.backgroundColor
-              : DarkThemeColors.backgroundColor,
-          brightness: isLight ? Brightness.light : Brightness.dark,
-        ).copyWith(
-          secondary: isLight
-              ? LightThemeColors.accentColor
-              : DarkThemeColors.accentColor,
-        ),
-
-        // color contrast (if the theme is dark text should be white for example)
-        brightness: isLight ? Brightness.light : Brightness.dark,
-
-        // card widget background color
-        cardColor:
-            isLight ? LightThemeColors.cardColor : DarkThemeColors.cardColor,
-
-        // hint text color
-        hintColor: isLight
-            ? LightThemeColors.hintTextColor
-            : DarkThemeColors.hintTextColor,
-
-        // divider color
-        dividerColor: isLight
-            ? LightThemeColors.dividerColor
-            : DarkThemeColors.dividerColor,
-
-        // app background color
-        scaffoldBackgroundColor: isLight
-            ? LightThemeColors.scaffoldBackgroundColor
-            : DarkThemeColors.scaffoldBackgroundColor,
-
-        // progress bar theme
-        progressIndicatorTheme: ProgressIndicatorThemeData(
-          color: isLight
-              ? LightThemeColors.primaryColor
-              : DarkThemeColors.primaryColor,
-        ),
-
-        // appBar theme
-        appBarTheme: MyStyles.getAppBarTheme(isLightTheme: isLight),
-
-        // elevated button theme
-        elevatedButtonTheme:
-            MyStyles.getElevatedButtonTheme(isLightTheme: isLight),
-
-        // text theme
-        textTheme: MyStyles.getTextTheme(isLightTheme: isLight),
-
-        // chip theme
-        chipTheme: MyStyles.getChipTheme(isLightTheme: isLight),
-
-        // icon theme
-        iconTheme: MyStyles.getIconTheme(isLightTheme: isLight),
-
-        // list tile theme
-        listTileTheme: MyStyles.getListTileThemeData(isLightTheme: isLight),
-
+        primaryColor: const Color(0xFF20125D),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF20125D)),
         // custom themes
+
+        // color of text in textfild
+        inputDecorationTheme: const InputDecorationTheme(
+          fillColor: Color(0xFF20125D),
+          filled: true,
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(10)),
+            borderSide: BorderSide(color: Color(0x660EE392)),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(10)),
+            borderSide: BorderSide(color: Color.fromARGB(255, 12, 34, 177)),
+          ),
+          errorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(10)),
+            borderSide: BorderSide(color: Color.fromARGB(255, 215, 33, 33)),
+          ),
+          hintStyle: TextStyle(color: Colors.white),
+          labelStyle: TextStyle(color: Colors.white),
+          errorStyle: TextStyle(color: Colors.white),
+        ),
         extensions: [
-          MyStyles.getHeaderContainerTheme(isLightTheme: isLight),
-          MyStyles.getEmployeeListItemTheme(isLightTheme: isLight),
+          MyStyles.getModalSheetTheme(),
         ]);
   }
 
