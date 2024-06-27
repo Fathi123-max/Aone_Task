@@ -26,6 +26,8 @@ class AoneApp extends StatelessWidget {
           title: "Aone Task",
           useInheritedMediaQuery: true,
           debugShowCheckedModeBanner: false,
+
+          defaultTransition: Transition.cupertino,
           builder: (context, widget) {
             return Theme(
               data: MyTheme.getThemeData(),
@@ -37,6 +39,7 @@ class AoneApp extends StatelessWidget {
               ),
             );
           },
+
           initialRoute:
               AppPages.initialRoute, // first screen to show when app is running
           getPages: AppPages.routes, // app screens

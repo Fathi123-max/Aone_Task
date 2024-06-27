@@ -15,10 +15,13 @@ class SplashScreenPage extends GetView<SplashScreenController> {
     return AnimatedSplashScreen.withScreenFunction(
       screenFunction: () async {
         return Future.delayed(5.seconds).then((value) {
-          Get.offNamed(Routes.authScreen);
-          return Future.value();
+          Get.offNamed(
+            Routes.authScreen,
+          );
+          return Future.delayed(0.seconds);
         });
       },
+      splashTransition: SplashTransition.fadeTransition,
       splash: '[n]https://i.imgur.com/YzcES3l.png',
       disableNavigation: true,
     );
