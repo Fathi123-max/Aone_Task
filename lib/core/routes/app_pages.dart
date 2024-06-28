@@ -17,12 +17,18 @@ class AppPages {
     GetPage(
         name: Routes.splashScreen,
         page: () => const SplashScreenPage(),
+        transition: Transition.size,
+        transitionDuration: 1.5.seconds,
         binding: SplashScreenBindings()),
     GetPage(
         name: Routes.authScreen,
         page: () => const AuthPage(),
+        transition: Transition.circularReveal,
+        transitionDuration: 1.5.seconds,
         binding: AuthBindings()),
     GetPage(
+        transition: Transition.cupertino,
+        transitionDuration: 1.5.seconds,
         name: Routes.home,
         page: () => const HomePage(),
         binding: HomeBindings()),
