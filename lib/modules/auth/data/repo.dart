@@ -46,8 +46,7 @@ class AuthRepo {
           MySharedPref.setSecurityToken(tokenModel.token!);
 
           MySharedPref.setHasAccessToMediaHub(tokenModel.hasAccessToMediaHub!);
-          print(tokenModel.hasAccessToMediaHub);
-          print(tokenModel.token);
+
           Get.off(() => const HomePage());
         } else {}
       },
