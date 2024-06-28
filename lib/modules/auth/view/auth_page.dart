@@ -9,12 +9,20 @@ class AuthPage extends GetView<AuthController> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(children: [
-      Image(
-          width: Get.width,
-          image: const AssetImage('assets/images/auth_background.png'),
-          fit: BoxFit.cover),
-      const WaltBottomSheet()
-    ]);
+    return PopScope(
+      canPop: false,
+      onPopInvoked: (didPop) {
+        if (!didPop) {
+          Get.find<AuthController>().pageIndexNotifier.value = ValueNotifier(0);
+        }
+      },
+      child: Stack(children: [
+        Image(
+            width: Get.width,
+            image: const AssetImage('assets/images/auth_background.png'),
+            fit: BoxFit.cover),
+        const WaltBottomSheet()
+      ]),
+    );
   }
 }
