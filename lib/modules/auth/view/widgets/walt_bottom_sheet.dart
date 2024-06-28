@@ -28,46 +28,47 @@ class _WaltBottomSheetState extends State<WaltBottomSheet>
   }
 
   @override
-  Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-
-    return WoltModalSheet(
-      showDragHandle: false,
-      useSafeArea: false,
-      animationController: AnimationController(vsync: this),
-      route:
-          WoltModalSheetRoute(pageListBuilderNotifier: ValueNotifier((context) {
-        return [
-          AuthnticationModelSheets.sign(context, textTheme),
-          AuthnticationModelSheets.signIn(context, textTheme),
-          AuthnticationModelSheets.signup(context, textTheme),
-          AuthnticationModelSheets.confirmationCode(context, textTheme)
-        ];
-      })),
-      decorator: (p0) {
-        return p0;
-      },
-      enableDrag: false,
-      onModalDismissedWithBarrierTap: () {},
-      modalTypeBuilder: (context) {
-        return WoltModalType.bottomSheet;
-      },
-      maxDialogWidth: 560,
-      minDialogWidth: 400,
-      minPageHeight: 0.0,
-      maxPageHeight: .65,
-      onModalDismissedWithDrag: () {},
-      pageListBuilderNotifier: ValueNotifier(
-        (context) {
+  Widget build(BuildContext normalContext) {
+    final textTheme = Theme.of(normalContext).textTheme;
+    return Obx(() {
+      return WoltModalSheet(
+        showDragHandle: false,
+        useSafeArea: false,
+        animationController: _controller,
+        route: WoltModalSheetRoute(
+            pageListBuilderNotifier: ValueNotifier((context) {
           return [
             AuthnticationModelSheets.sign(context, textTheme),
             AuthnticationModelSheets.signIn(context, textTheme),
             AuthnticationModelSheets.signup(context, textTheme),
             AuthnticationModelSheets.confirmationCode(context, textTheme)
           ];
+        })),
+        decorator: (p0) {
+          return p0;
         },
-      ),
-      pageIndexNotifier: Get.find<AuthController>().pageIndexNotifier.value,
-    );
+        enableDrag: false,
+        onModalDismissedWithBarrierTap: () {},
+        modalTypeBuilder: (context) {
+          return WoltModalType.bottomSheet;
+        },
+        maxDialogWidth: 560,
+        minDialogWidth: 400,
+        minPageHeight: 0.0,
+        maxPageHeight: .65,
+        onModalDismissedWithDrag: () {},
+        pageListBuilderNotifier: ValueNotifier(
+          (context) {
+            return [
+              AuthnticationModelSheets.sign(context, textTheme),
+              AuthnticationModelSheets.signIn(context, textTheme),
+              AuthnticationModelSheets.signup(context, textTheme),
+              AuthnticationModelSheets.confirmationCode(context, textTheme)
+            ];
+          },
+        ),
+        pageIndexNotifier: Get.find<AuthController>().pageIndexNotifier.value,
+      );
+    });
   }
 }
