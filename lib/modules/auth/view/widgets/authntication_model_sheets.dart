@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:getx_skeleton/core/routes/app_pages.dart';
 import 'package:getx_skeleton/core/theme/my_colors.dart';
 import 'package:getx_skeleton/core/theme/my_styles.dart';
 import 'package:getx_skeleton/modules/auth/logic/auth_controller.dart';
@@ -46,14 +45,16 @@ class AuthnticationModelSheets {
           45.verticalSpace,
           AuthButton(
             onPressed: () {
-              WoltModalSheet.of(modalSheetContext).showAtIndex(1);
+              Get.find<AuthController>().pageIndexNotifier.value =
+                  ValueNotifier(1);
             },
             name: 'Sign in',
           ),
           44.verticalSpace,
           GestureDetector(
             onTap: () {
-              WoltModalSheet.of(modalSheetContext).showAtIndex(2);
+              Get.find<AuthController>().pageIndexNotifier.value =
+                  ValueNotifier(2);
             },
             child: Text(
               'Register For The Event ?',
@@ -80,6 +81,9 @@ class AuthnticationModelSheets {
               textAlign: TextAlign.center, style: MyStyles.font32w500()),
           82.verticalSpace,
           AuthTextFiled(
+            validator: (value) {
+              return GetUtils.isEmail(value!) ? null : "";
+            },
             textFiledHeader: "Email",
             controller: Get.find<AuthController>().emailTextEditingController,
           ),
@@ -102,9 +106,12 @@ class AuthnticationModelSheets {
           45.verticalSpace,
           AuthButton(
             onPressed: () {
-              Get.find<AuthController>()
-                  .authRepo
-                  .requestOtp(context: modalSheetContext);
+              if (GetUtils.isEmail(
+                  Get.find<AuthController>().emailTextEditingController.text)) {
+                Get.find<AuthController>()
+                    .authRepo
+                    .requestOtp(context: modalSheetContext);
+              }
             },
             //m@aone.sa
             name: 'GO',
@@ -112,7 +119,8 @@ class AuthnticationModelSheets {
           44.verticalSpace,
           GestureDetector(
             onTap: () {
-              WoltModalSheet.of(modalSheetContext).showAtIndex(2);
+              Get.find<AuthController>().pageIndexNotifier.value =
+                  ValueNotifier(2);
             },
             child: Text(
               'Register For The Event ?',
@@ -151,7 +159,8 @@ class AuthnticationModelSheets {
           34.verticalSpace,
           AuthButton(
             onPressed: () {
-              WoltModalSheet.of(modalSheetContext).showAtIndex(3);
+              Get.find<AuthController>().pageIndexNotifier.value =
+                  ValueNotifier(3);
             },
             name: 'GO',
           ),
@@ -188,14 +197,16 @@ class AuthnticationModelSheets {
                 width: 300.w,
                 height: 42.h,
                 child: PinFieldAutoFill(
+                    cursor:
+                        Cursor(color: MyColors.white, enabled: true, width: 1),
                     controller: Get.find<AuthController>().otpController,
                     decoration: BoxLooseDecoration(
                         textStyle: const TextStyle(color: MyColors.white),
                         radius: const Radius.circular(8),
                         strokeWidth: 1.5,
                         bgColorBuilder:
-                            const FixedColorBuilder(Color(0xFF2F1B8E)),
-                        strokeColorBuilder: const FixedColorBuilder(Colors
+                            const FixedColorBuilder(MyColors.toggolecolor),
+                        strokeColorBuilder: const FixedColorBuilder(MyColors
                             .green)), // UnderlineDecoration, BoxLooseDecoration or BoxTightDecoration see https://github.com/TinoGuo/pin_input_text_field for more info,
                     currentCode: "", // prefill with a code
                     onCodeSubmitted: null, //code submitted callback
@@ -234,11 +245,7 @@ class AuthnticationModelSheets {
             onPressed: () {
               Get.find<AuthController>()
                   .authRepo
-                  .verifyOtp(context: modalSheetContext)
-                  .then((value) {
-                Get.offNamed(Routes.home);
-                //m@aone.sa
-              });
+                  .verifyOtp(context: modalSheetContext);
             },
             name: 'GO',
           ),

@@ -7,23 +7,27 @@ import 'package:getx_skeleton/modules/auth/data/model/token_model.dart';
 import 'package:getx_skeleton/modules/auth/logic/auth_controller.dart';
 import 'package:getx_skeleton/modules/home/view/home_page.dart';
 import 'package:sms_autofill/sms_autofill.dart';
-import 'package:wolt_modal_sheet/wolt_modal_sheet.dart';
 
 class AuthRepo {
   Future<bool> requestOtp({required BuildContext context}) async {
+    var controller = Get.find<AuthController>();
     await BaseClient.safeApiCall(
-      data: {
-        "email": Get.find<AuthController>().emailTextEditingController.text
-      },
+      data: {"email": controller.emailTextEditingController.text},
       ApiUrl.requestOtp,
       RequestType.post,
+      onLoading: () {
+        controller.isLoading.value = true;
+      },
       onSuccess: (res) {
-        res.statusCode == 200
-            ? WoltModalSheet.of(context).showAtIndex(3)
-            : null;
+        if (res.statusCode == 200) {
+          controller.isLoading.value = false;
+          controller.pageIndexNotifier.value = ValueNotifier(3);
+        }
+
         return true;
       },
       onError: (error) {
+        controller.isLoading.value = false;
         BaseClient.handleApiError(error);
         return false;
       },
@@ -32,16 +36,21 @@ class AuthRepo {
   }
 
   verifyOtp({required BuildContext context}) async {
+    var controller = Get.find<AuthController>();
     await SmsAutoFill().listenForCode();
     await BaseClient.safeApiCall(
       data: {
-        "email": Get.find<AuthController>().emailTextEditingController.text,
-        "otp": Get.find<AuthController>().otpController.text
+        "email": controller.emailTextEditingController.text,
+        "otp": controller.otpController.text
       },
       ApiUrl.verifyOtp,
       RequestType.post,
+      onLoading: () {
+        controller.isLoading.value = true;
+      },
       onSuccess: (res) {
         if (res.statusCode == 200) {
+          controller.isLoading.value = false;
           TokenModel tokenModel = TokenModel.fromJson(res.data);
           MySharedPref.setSecurityToken(tokenModel.token!);
 
@@ -51,6 +60,7 @@ class AuthRepo {
         } else {}
       },
       onError: (error) {
+        controller.isLoading.value = false;
         BaseClient.handleApiError(error);
       },
     );

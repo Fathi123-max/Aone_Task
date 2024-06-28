@@ -18,6 +18,7 @@ class AoneApp extends StatelessWidget {
       designSize: const Size(393, 898),
       minTextAdapt: true,
       splitScreenMode: true,
+
       useInheritedMediaQuery: true,
       rebuildFactor: (old, data) => true,
       builder: (context, widget) {
@@ -34,7 +35,8 @@ class AoneApp extends StatelessWidget {
               child: MediaQuery(
                 // prevent font from scalling (some people use big/small device fonts)
                 // but we want our app font to still the same and dont get affected
-                data: MediaQuery.of(context).copyWith(textScaler: const TextScaler.linear(1.0)),
+                data: MediaQuery.of(context)
+                    .copyWith(textScaler: const TextScaler.linear(1.0)),
                 child: widget!,
               ),
             );
