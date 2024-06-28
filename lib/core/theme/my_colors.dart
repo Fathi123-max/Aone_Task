@@ -10,4 +10,10 @@ class MyColors {
   static const Color toggolecolor = Color(0xFF2F1B8E);
 
   static const Color green = Color(0xFF0EE392);
+//Color(0xFF051F68)
+
+  static const Color blue = Color(0xFF051F68);
+  //Color(0xFF0F0734)
+
+  static const Color homePageBlack = Color(0xFF0F0734);
 }

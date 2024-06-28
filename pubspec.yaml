@@ -36,6 +36,7 @@ dependencies:
   wolt_modal_sheet: ^0.6.1
   sms_autofill: ^2.4.0
   flutter_secure_storage: ^9.2.2
+  readmore: ^3.0.0
 
 dev_dependencies:
   mockito:

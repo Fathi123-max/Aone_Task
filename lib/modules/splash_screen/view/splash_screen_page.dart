@@ -16,7 +16,7 @@ class SplashScreenPage extends GetView<SplashScreenController> {
       screenFunction: () async {
         return Future.delayed(5.seconds).then((value) {
           Get.offNamed(
-            Routes.authScreen,
+            Routes.home,
           );
           return Future.delayed(0.seconds);
         });

@@ -4,6 +4,62 @@ import 'package:getx_skeleton/core/theme/my_colors.dart';
 import 'package:wolt_modal_sheet/wolt_modal_sheet.dart';
 
 class MyStyles {
+  //12 w600 color green roboto height 0 letter spacing 0.01
+  static TextStyle font12w600Green() => TextStyle(
+        fontFamily: 'Roboto',
+        height: 0,
+        letterSpacing: 0.01,
+        fontSize: 12.sp,
+        fontWeight: FontWeight.w600,
+        color: MyColors.green,
+      );
+  //12 w400 color white roboto height 0 letter spacing 0.01
+  static TextStyle font12w400White() => TextStyle(
+        fontFamily: 'Roboto',
+        height: 0,
+        letterSpacing: 0.01,
+        fontSize: 12.sp,
+        fontWeight: FontWeight.w400,
+        color: MyColors.white,
+      );
+  //20 w600 color white roboto height 0 letter spacing 0.02
+  static TextStyle font20w600White() => TextStyle(
+        fontFamily: 'Roboto',
+        height: 0,
+        letterSpacing: 0.02,
+        fontSize: 20.sp,
+        fontWeight: FontWeight.w600,
+        color: MyColors.white,
+      );
+  // 9 w400 color white
+  static TextStyle font9w400White() => TextStyle(
+        fontFamily: 'Roboto',
+        height: 0,
+        letterSpacing: 0.01,
+        fontSize: 9.sp,
+        fontWeight: FontWeight.w400,
+        color: MyColors.white,
+      );
+
+// text style 27 w700 color green
+  static TextStyle font27w700Green() => TextStyle(
+        fontFamily: 'Roboto',
+        height: 0,
+        letterSpacing: 0.03,
+        fontSize: 27.sp,
+        fontWeight: FontWeight.w700,
+        color: MyColors.green,
+      );
+
+// text style 32 w900 color white
+  static TextStyle font32w900() => TextStyle(
+        fontSize: 32.sp,
+        height: 1.2,
+        letterSpacing: 0.03,
+        fontWeight: FontWeight.w900,
+        color: MyColors.white,
+      );
+
 //text style 16 w700
   static TextStyle font16w700() => TextStyle(
         fontSize: 16.sp,

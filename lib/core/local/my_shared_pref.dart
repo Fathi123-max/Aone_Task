@@ -13,7 +13,7 @@ class MySharedPref {
   static late FlutterSecureStorage _secureStorage;
 
 // Create storage
-  final storage = new FlutterSecureStorage();
+  final storage = const FlutterSecureStorage();
 
 // // Read value
 // String value = await storage.read(key: key);
