@@ -81,6 +81,9 @@ class AuthnticationModelSheets {
               textAlign: TextAlign.center, style: MyStyles.font32w500()),
           82.verticalSpace,
           AuthTextFiled(
+            validator: (value) {
+              return GetUtils.isEmail(value!) ? null : "";
+            },
             textFiledHeader: "Email",
             controller: Get.find<AuthController>().emailTextEditingController,
           ),
@@ -103,9 +106,12 @@ class AuthnticationModelSheets {
           45.verticalSpace,
           AuthButton(
             onPressed: () {
-              Get.find<AuthController>()
-                  .authRepo
-                  .requestOtp(context: modalSheetContext);
+              if (GetUtils.isEmail(
+                  Get.find<AuthController>().emailTextEditingController.text)) {
+                Get.find<AuthController>()
+                    .authRepo
+                    .requestOtp(context: modalSheetContext);
+              }
             },
             //m@aone.sa
             name: 'GO',
