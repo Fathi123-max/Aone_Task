@@ -1,6 +1,10 @@
 import 'package:get/get.dart';
+import 'package:getx_skeleton/modules/auth/data/auth_bindings.dart';
+import 'package:getx_skeleton/modules/auth/view/auth_page.dart';
+import 'package:getx_skeleton/modules/home/data/home_bindings.dart';
+import 'package:getx_skeleton/modules/home/view/home_page.dart';
 import 'package:getx_skeleton/modules/splash_screen/data/splash_screen_bindings.dart';
-import 'package:getx_skeleton/modules/splash_screen/ui/splash_screen_page.dart';
+import 'package:getx_skeleton/modules/splash_screen/view/splash_screen_page.dart';
 
 part 'app_routes.dart';
 
@@ -14,5 +18,13 @@ class AppPages {
         name: Routes.splashScreen,
         page: () => const SplashScreenPage(),
         binding: SplashScreenBindings()),
+    GetPage(
+        name: Routes.authScreen,
+        page: () => const AuthPage(),
+        binding: AuthBindings()),
+    GetPage(
+        name: Routes.home,
+        page: () => const HomePage(),
+        binding: HomeBindings()),
   ];
 }

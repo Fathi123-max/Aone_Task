@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../translations/localization_service.dart';
@@ -9,20 +10,58 @@ class MySharedPref {
 
   // get storage
   static late SharedPreferences _sharedPreferences;
+  static late FlutterSecureStorage _secureStorage;
+
+// Create storage
+  final storage = const FlutterSecureStorage();
+
+// // Read value
+// String value = await storage.read(key: key);
+
+// // Read all values
+// Map<String, String> allValues = await storage.readAll();
+
+// // Delete value
+// await storage.delete(key: key);
+
+// // Delete all
+// await storage.deleteAll();
+
+// // Write value
+// await storage.write(key: key, value: value);
 
   // STORING KEYS
   static const String _fcmTokenKey = 'fcm_token';
   static const String _currentLocalKey = 'current_local';
   static const String _lightThemeKey = 'is_theme_light';
+  static const String _tokenKey = 'token';
+  static const String _hasAccessToMediaHubKey = 'has_access_to_media_hub';
 
   /// init get storage services
   static Future<void> init() async {
     _sharedPreferences = await SharedPreferences.getInstance();
+    _secureStorage = const FlutterSecureStorage();
   }
 
   static setStorage(SharedPreferences sharedPreferences) {
     _sharedPreferences = sharedPreferences;
   }
+
+//set security token
+  static Future<void> setSecurityToken(String token) =>
+      _secureStorage.write(key: _tokenKey, value: token);
+
+// get security token
+  static Future<String?> getSecurityToken() =>
+      _secureStorage.read(key: _tokenKey);
+
+//set has access to media hub
+  static Future<void> setHasAccessToMediaHub(int hasAccessToMediaHub) =>
+      _sharedPreferences.setInt(_hasAccessToMediaHubKey, hasAccessToMediaHub);
+
+// get has access to media hub
+  static int getHasAccessToMediaHub() =>
+      _sharedPreferences.getInt(_hasAccessToMediaHubKey) ?? 0;
 
   /// set theme current type as light theme
   static Future<void> setThemeIsLight(bool lightTheme) =>

@@ -1,242 +1,146 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:getx_skeleton/core/theme/theme_extensions/header_container_theme_data.dart';
-
-import 'dark_theme_colors.dart';
-import 'light_theme_colors.dart';
-import 'my_fonts.dart';
-import 'theme_extensions/employee_list_item_theme_data.dart';
+import 'package:getx_skeleton/core/theme/my_colors.dart';
+import 'package:wolt_modal_sheet/wolt_modal_sheet.dart';
 
 class MyStyles {
-  /// custom employee list item theme
-  static EmployeeListItemThemeData getEmployeeListItemTheme(
-      {required bool isLightTheme}) {
-    return EmployeeListItemThemeData(
-      backgroundColor: isLightTheme
-          ? LightThemeColors.employeeListItemBackgroundColor
-          : DarkThemeColors.employeeListItemBackgroundColor,
-      iconTheme: IconThemeData(
-        color: isLightTheme
-            ? LightThemeColors.employeeListItemIconsColor
-            : DarkThemeColors.employeeListItemIconsColor,
-      ),
-      nameTextStyle: MyFonts.bodyTextStyle.copyWith(
-        fontSize: MyFonts.employeeListItemNameSize,
-        fontWeight: FontWeight.bold,
-        color: isLightTheme
-            ? LightThemeColors.employeeListItemNameColor
-            : DarkThemeColors.employeeListItemNameColor,
-      ),
-      subtitleTextStyle: MyFonts.bodyTextStyle.copyWith(
-        fontSize: MyFonts.employeeListItemSubtitleSize,
-        fontWeight: FontWeight.normal,
-        color: isLightTheme
-            ? LightThemeColors.employeeListItemSubtitleColor
-            : DarkThemeColors.employeeListItemSubtitleColor,
-      ),
-    );
-  }
-
-  /// custom header theme
-  static HeaderContainerThemeData getHeaderContainerTheme(
-          {required bool isLightTheme}) =>
-      HeaderContainerThemeData(
-          decoration: BoxDecoration(
-        color: isLightTheme
-            ? LightThemeColors.headerContainerBackgroundColor
-            : DarkThemeColors.headerContainerBackgroundColor,
-        borderRadius: BorderRadius.circular(8),
-      ));
-
-  ///icons theme
-  static IconThemeData getIconTheme({required bool isLightTheme}) =>
-      IconThemeData(
-        color: isLightTheme
-            ? LightThemeColors.iconColor
-            : DarkThemeColors.iconColor,
+  //12 w600 color green roboto height 0 letter spacing 0.01
+  static TextStyle font12w600Green() => TextStyle(
+        fontFamily: 'Roboto',
+        height: 0,
+        letterSpacing: 0.01,
+        fontSize: 12.sp,
+        fontWeight: FontWeight.w600,
+        color: MyColors.green,
+      );
+  //12 w400 color white roboto height 0 letter spacing 0.01
+  static TextStyle font12w400White() => TextStyle(
+        fontFamily: 'Roboto',
+        height: 0,
+        letterSpacing: 0.01,
+        fontSize: 12.sp,
+        fontWeight: FontWeight.w400,
+        color: MyColors.white,
+      );
+  //20 w600 color white roboto height 0 letter spacing 0.02
+  static TextStyle font20w600White() => TextStyle(
+        fontFamily: 'Roboto',
+        height: 0,
+        letterSpacing: 0.02,
+        fontSize: 20.sp,
+        fontWeight: FontWeight.w600,
+        color: MyColors.white,
+      );
+  // 9 w400 color white
+  static TextStyle font9w400White() => TextStyle(
+        fontFamily: 'Roboto',
+        height: 0,
+        letterSpacing: 0.01,
+        fontSize: 9.sp,
+        fontWeight: FontWeight.w400,
+        color: MyColors.white,
       );
 
-  ///app bar theme
-  static AppBarTheme getAppBarTheme({required bool isLightTheme}) =>
-      AppBarTheme(
-        elevation: 0,
-        titleTextStyle:
-            getTextTheme(isLightTheme: isLightTheme).bodyMedium!.copyWith(
-                  color: Colors.white,
-                  fontSize: MyFonts.appBarTittleSize,
-                ),
-        iconTheme: IconThemeData(
-            color: isLightTheme
-                ? LightThemeColors.appBarIconsColor
-                : DarkThemeColors.appBarIconsColor),
-        backgroundColor: isLightTheme
-            ? LightThemeColors.appBarColor
-            : DarkThemeColors.appbarColor,
+// text style 27 w700 color green
+  static TextStyle font27w700Green() => TextStyle(
+        fontFamily: 'Roboto',
+        height: 0,
+        letterSpacing: 0.03,
+        fontSize: 27.sp,
+        fontWeight: FontWeight.w700,
+        color: MyColors.green,
       );
 
-  ///text theme
-  static TextTheme getTextTheme({required bool isLightTheme}) => TextTheme(
-        labelLarge: MyFonts.buttonTextStyle.copyWith(
-          fontSize: MyFonts.buttonTextSize,
-        ),
-        bodyLarge: (MyFonts.bodyTextStyle).copyWith(
-          fontWeight: FontWeight.bold,
-          fontSize: MyFonts.bodyLargeSize,
-          color: isLightTheme
-              ? LightThemeColors.bodyTextColor
-              : DarkThemeColors.bodyTextColor,
-        ),
-        bodyMedium: (MyFonts.bodyTextStyle).copyWith(
-          fontSize: MyFonts.bodyMediumSize,
-          color: isLightTheme
-              ? LightThemeColors.bodyTextColor
-              : DarkThemeColors.bodyTextColor,
-        ),
-        displayLarge: (MyFonts.displayTextStyle).copyWith(
-          fontSize: MyFonts.displayLargeSize,
-          fontWeight: FontWeight.bold,
-          color: isLightTheme
-              ? LightThemeColors.displayTextColor
-              : DarkThemeColors.displayTextColor,
-        ),
-        bodySmall: TextStyle(
-            color: isLightTheme
-                ? LightThemeColors.bodySmallTextColor
-                : DarkThemeColors.bodySmallTextColor,
-            fontSize: MyFonts.bodySmallTextSize),
-        displayMedium: (MyFonts.displayTextStyle).copyWith(
-            fontSize: MyFonts.displayMediumSize,
-            fontWeight: FontWeight.bold,
-            color: isLightTheme
-                ? LightThemeColors.displayTextColor
-                : DarkThemeColors.displayTextColor),
-        displaySmall: (MyFonts.displayTextStyle).copyWith(
-          fontSize: MyFonts.displaySmallSize,
-          fontWeight: FontWeight.bold,
-          color: isLightTheme
-              ? LightThemeColors.displayTextColor
-              : DarkThemeColors.displayTextColor,
-        ),
+// text style 32 w900 color white
+  static TextStyle font32w900() => TextStyle(
+        fontSize: 32.sp,
+        height: 1.2,
+        letterSpacing: 0.03,
+        fontWeight: FontWeight.w900,
+        color: MyColors.white,
       );
 
-  static ChipThemeData getChipTheme({required bool isLightTheme}) {
-    return ChipThemeData(
-      backgroundColor: isLightTheme
-          ? LightThemeColors.chipBackground
-          : DarkThemeColors.chipBackground,
-      brightness: Brightness.light,
-      labelStyle: getChipTextStyle(isLightTheme: isLightTheme),
-      secondaryLabelStyle: getChipTextStyle(isLightTheme: isLightTheme),
-      selectedColor: Colors.black,
-      disabledColor: Colors.green,
-      padding: const EdgeInsets.all(5),
-      secondarySelectedColor: Colors.purple,
-    );
-  }
+//text style 16 w700
+  static TextStyle font16w700() => TextStyle(
+        fontSize: 16.sp,
+        fontWeight: FontWeight.w700,
+        color: MyColors.white,
+      );
+//text style 15 w400 white38
+  static TextStyle font15w400White38() => TextStyle(
+        fontSize: 15.sp,
+        fontWeight: FontWeight.w400,
+        color: Colors.white38,
+      );
 
-  ///Chips text style
-  static TextStyle getChipTextStyle({required bool isLightTheme}) {
-    return MyFonts.chipTextStyle.copyWith(
-      fontSize: MyFonts.chipTextSize,
-      color: isLightTheme
-          ? LightThemeColors.chipTextColor
-          : DarkThemeColors.chipTextColor,
-    );
-  }
+//27 w400
+  static TextStyle font27w400() => TextStyle(
+        fontSize: 27.sp,
+        fontWeight: FontWeight.w400,
+        color: MyColors.white,
+      );
 
-  // elevated button text style
-  static MaterialStateProperty<TextStyle?>? getElevatedButtonTextStyle(
-      bool isLightTheme,
-      {bool isBold = true,
-      double? fontSize}) {
-    return MaterialStateProperty.resolveWith<TextStyle>(
-      (Set<MaterialState> states) {
-        if (states.contains(MaterialState.pressed)) {
-          return MyFonts.buttonTextStyle.copyWith(
-            fontWeight: isBold ? FontWeight.bold : FontWeight.normal,
-            fontSize: fontSize ?? MyFonts.buttonTextSize,
-            color: isLightTheme
-                ? LightThemeColors.buttonTextColor
-                : DarkThemeColors.buttonTextColor,
-          );
-        } else if (states.contains(MaterialState.disabled)) {
-          return MyFonts.buttonTextStyle.copyWith(
-            fontSize: fontSize ?? MyFonts.buttonTextSize,
-            fontWeight: isBold ? FontWeight.bold : FontWeight.normal,
-            color: isLightTheme
-                ? LightThemeColors.buttonDisabledTextColor
-                : DarkThemeColors.buttonDisabledTextColor,
-          );
-        }
-        return MyFonts.buttonTextStyle.copyWith(
-          fontSize: fontSize ?? MyFonts.buttonTextSize,
-          fontWeight: isBold ? FontWeight.bold : FontWeight.normal,
-          color: isLightTheme
-              ? LightThemeColors.buttonTextColor
-              : DarkThemeColors.buttonTextColor,
-        ); // Use the component's default.
-      },
-    );
-  }
+//20 w700
+  static TextStyle font20w700() => TextStyle(
+        fontSize: 20.sp,
+        fontWeight: FontWeight.w700,
+        color: MyColors.primaryColor,
+      );
 
-  //elevated button theme data
-  static ElevatedButtonThemeData getElevatedButtonTheme(
-          {required bool isLightTheme}) =>
-      ElevatedButtonThemeData(
-        style: ButtonStyle(
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(6.r),
-              //side: BorderSide(color: Colors.teal, width: 2.0),
-            ),
-          ),
-          elevation: MaterialStateProperty.all(0),
-          padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-              EdgeInsets.symmetric(vertical: 8.h)),
-          textStyle: getElevatedButtonTextStyle(isLightTheme),
-          backgroundColor: MaterialStateProperty.resolveWith<Color>(
-            (Set<MaterialState> states) {
-              if (states.contains(MaterialState.pressed)) {
-                return isLightTheme
-                    ? LightThemeColors.buttonColor.withOpacity(0.5)
-                    : DarkThemeColors.buttonColor.withOpacity(0.5);
-              } else if (states.contains(MaterialState.disabled)) {
-                return isLightTheme
-                    ? LightThemeColors.buttonDisabledColor
-                    : DarkThemeColors.buttonDisabledColor;
-              }
-              return isLightTheme
-                  ? LightThemeColors.buttonColor
-                  : DarkThemeColors.buttonColor; // Use the component's default.
-            },
-          ),
+  //12 w700
+  static TextStyle font12w700() => TextStyle(
+        fontSize: 12.sp,
+        fontWeight: FontWeight.w700,
+        color: MyColors.white,
+      );
+//32 w500
+  static TextStyle font32w500() => TextStyle(
+        fontSize: 32.sp,
+        fontWeight: FontWeight.w500,
+        color: MyColors.white,
+      );
+
+//20 w300
+  static TextStyle font20w300() => TextStyle(
+        fontSize: 20.sp,
+        fontWeight: FontWeight.w300,
+        color: MyColors.white,
+      );
+//16 w400
+  static TextStyle font16w400() => TextStyle(
+        fontSize: 16.sp,
+        color: MyColors.green,
+        fontWeight: FontWeight.w400,
+      );
+
+  //11 w 400
+  static TextStyle font11w400() => TextStyle(
+        fontSize: 11.sp,
+        fontWeight: FontWeight.w400,
+        color: MyColors.green,
+      );
+// outline btn style
+  static ButtonStyle outlineBtnStyle() => OutlinedButton.styleFrom(
+        fixedSize: Size(331.w, 42.h),
+        backgroundColor: const Color(0xFF0EE392),
+        side: const BorderSide(color: Color(0xFF0EE392), width: 1),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
         ),
       );
 
-  /// list tile theme data
-  static ListTileThemeData getListTileThemeData({required bool isLightTheme}) {
-    return ListTileThemeData(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8.r),
-      ),
-      iconColor: isLightTheme
-          ? LightThemeColors.listTileIconColor
-          : DarkThemeColors.listTileIconColor,
-      tileColor: isLightTheme
-          ? LightThemeColors.listTileBackgroundColor
-          : DarkThemeColors.listTileBackgroundColor,
-      titleTextStyle: TextStyle(
-        fontSize: MyFonts.listTileTitleSize,
-        color: isLightTheme
-            ? LightThemeColors.listTileTitleColor
-            : DarkThemeColors.listTileTitleColor,
-      ),
-      subtitleTextStyle: TextStyle(
-        fontSize: MyFonts.listTileSubtitleSize,
-        color: isLightTheme
-            ? LightThemeColors.listTileSubtitleColor
-            : DarkThemeColors.listTileSubtitleColor,
-      ),
-    );
-  }
+  // wolt modal sheet theme
+  static WoltModalSheetThemeData getModalSheetTheme() =>
+      const WoltModalSheetThemeData(
+        backgroundColor: MyColors.primaryColor,
+        topBarShadowColor: Colors.black12,
+        modalBarrierColor: Colors.black45,
+        sabGradientColor: Colors.black12,
+        bottomSheetShape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(60),
+          topRight: Radius.circular(60),
+        )),
+        mainContentScrollPhysics: ClampingScrollPhysics(),
+      );
 }
