@@ -31,10 +31,17 @@ class AuthTextFiled extends StatelessWidget {
           width: 333.w,
           height: 48.h,
           child: TextFormField(
+            key: Key(textFiledHeader),
+            autovalidateMode: AutovalidateMode.onUserInteraction,
             validator: validator,
             controller: controller,
             style: const TextStyle(color: Colors.white),
             decoration: const InputDecoration(
+              focusedErrorBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.red),
+              ),
+              errorStyle: TextStyle(
+                  color: Colors.red, height: 0, overflow: TextOverflow.fade),
               contentPadding: EdgeInsets.symmetric(horizontal: 10),
             ),
           ),
